@@ -1,0 +1,30 @@
+{
+  "wifi": {
+    "ssid": "SEU_WIFI",
+    "password": "SUA_SENHA"
+  },
+  "mqtt": {
+    "host": "192.168.1.10",
+    "port": 1883,
+    "username": "usuario",
+    "password": "senha",
+    "clientId": "esp32-setor-a",
+    "publishRetained": true
+  },
+  "device": {
+    "siteId": "matriz",
+    "deviceId": "esp32-setor-a"
+  },
+  "timing": {
+    "sensorDebounceMs": 120,
+    "wifiReconnectIntervalMs": 10000,
+    "mqttReconnectIntervalMs": 5000,
+    "publishIntervalMs": 0
+  },
+  "spots": [
+    { "id": "A1", "pin": 33, "occupiedOnHigh": true },
+    { "id": "A2", "pin": 25, "occupiedOnHigh": true },
+    { "id": "A3", "pin": 26, "occupiedOnHigh": true },
+    { "id": "A4", "pin": 27, "occupiedOnHigh": true }
+  ]
+}
