@@ -6,6 +6,7 @@ void MqttManager::begin(const AppConfig& config, uint32_t reconnectIntervalMs) {
   mqttConfig_ = config.mqtt;
   deviceConfig_ = config.device;
   reconnectIntervalMs_ = reconnectIntervalMs;
+  mqttClient_.setBufferSize(MQTT_PACKET_BUFFER_SIZE);
   mqttClient_.setServer(mqttConfig_.host.c_str(), mqttConfig_.port);
 }
 
@@ -92,6 +93,10 @@ bool MqttManager::publishStatus(const AppConfig& config,
     Serial.println(F("[MQTT] status publicado"));
   } else {
     Serial.println(F("[MQTT] falha ao publicar status"));
+    Serial.print(F("[MQTT] tamanho do payload: "));
+    Serial.println(payload.length());
+    Serial.print(F("[MQTT] tamanho do topico: "));
+    Serial.println(statusTopic.length());
   }
 
   return published;

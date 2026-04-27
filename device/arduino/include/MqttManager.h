@@ -6,6 +6,8 @@
 #include "AppConfig.h"
 #include "ParkingSpotManager.h"
 
+constexpr uint16_t MQTT_PACKET_BUFFER_SIZE = 1024;
+
 class MqttManager {
  public:
   void begin(const AppConfig& config, uint32_t reconnectIntervalMs);
