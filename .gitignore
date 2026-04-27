@@ -4,3 +4,8 @@ device/arduino/.pio/
 device/arduino/.vscode/
 device/arduino/data/config.json
 !device/arduino/data/config.json.example
+.env
+.env.p*
+!.env.example
+*.log
+*.bak
