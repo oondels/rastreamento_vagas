@@ -9,3 +9,7 @@ device/arduino/data/config.json
 !.env.example
 *.log
 *.bak
+node_modules/
+dist/
+build/
+coverage/
