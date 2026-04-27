@@ -16,6 +16,10 @@ bool ConfigManager::loadConfigFromFile(AppConfig& config) {
   File file = LittleFS.open("/config.json", "r");
   if (!file) {
     printConfigError(F("arquivo /config.json nao encontrado"));
+    Serial.println(
+        F("[Config] dica: crie device/arduino/data/config.json a partir de "
+          "config.json.example e execute 'pio run -t uploadfs'"));
+    printFilesystemContents();
     return false;
   }
 
@@ -138,6 +142,28 @@ bool ConfigManager::hasDuplicateId(const AppConfig& config, size_t spotIndex,
   }
 
   return false;
+}
+
+void ConfigManager::printFilesystemContents() const {
+  File root = LittleFS.open("/", "r");
+  if (!root || !root.isDirectory()) {
+    Serial.println(F("[Config] nao foi possivel listar o conteudo do LittleFS"));
+    return;
+  }
+
+  Serial.println(F("[Config] arquivos encontrados no LittleFS:"));
+
+  File entry = root.openNextFile();
+  if (!entry) {
+    Serial.println(F("[Config]   (vazio)"));
+    return;
+  }
+
+  while (entry) {
+    Serial.print(F("[Config]   "));
+    Serial.println(entry.name());
+    entry = root.openNextFile();
+  }
 }
 
 void ConfigManager::printConfigError(

@@ -10,6 +10,7 @@ class ConfigManager {
 
  private:
   bool loadConfigFromFile(AppConfig& config);
+  void printFilesystemContents() const;
   bool validateAndPopulateSpot(size_t index, const JsonObjectConst& spotObject,
                                AppConfig& config);
   bool hasDuplicateId(const AppConfig& config, size_t spotIndex,

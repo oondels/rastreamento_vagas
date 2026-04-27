@@ -38,7 +38,7 @@ Implementado e funcional como firmware base do dispositivo IoT:
 - publicacao MQTT centralizada no boot, em mudanca estavel e apos reconexao
 - payload JSON consolidado para consumo do backend
 
-Documentacao principal do firmware: [device/arduino/platformio.ini](/home/oendel/Documentos/PlatformIO/Projects/mapeamento_vagas/device/arduino/platformio.ini:1) e [data/config.json.example](/home/oendel/Documentos/PlatformIO/Projects/mapeamento_vagas/device/arduino/data/config.json.example:1)
+Documentacao principal do firmware: [device/arduino/README.md](/home/oendel/Documentos/PlatformIO/Projects/mapeamento_vagas/device/arduino/README.md:1)
 
 ### `server/`
 
@@ -197,13 +197,15 @@ ws://localhost:3001/ws
 ## Observacoes Operacionais
 
 - `device/arduino/data/config.json` nao deve ser versionado.
+- o firmware exige `/config.json` no LittleFS; `config.json.example` nao e usado em runtime
+- apos criar ou alterar `device/arduino/data/config.json`, execute `pio run -t uploadfs`
 - `app/.env` e `server/.env` devem permanecer locais.
 - `node_modules/`, `dist/`, `.pio/` e artefatos de build ja estao ignorados.
 - O frontend depende do backend WebSocket para popular o dashboard; sem `bootstrap` ou `snapshot`, a UI permanece vazia por design.
 
 ## Documentacao por Modulo
 
-- Firmware: [device/arduino](/home/oendel/Documentos/PlatformIO/Projects/mapeamento_vagas/device/arduino:1)
+- Firmware: [device/arduino/README.md](/home/oendel/Documentos/PlatformIO/Projects/mapeamento_vagas/device/arduino/README.md:1)
 - Backend: [server/README.md](/home/oendel/Documentos/PlatformIO/Projects/mapeamento_vagas/server/README.md:1)
 - Frontend: [app/README.md](/home/oendel/Documentos/PlatformIO/Projects/mapeamento_vagas/app/README.md:1)
 
